@@ -8,10 +8,10 @@ public class Main {
 
         int x, y;
 
-        System.out.println("Entrez l'indice de l'entier à diviser: ");
-
-        x = sc.nextInt();
-
+        //System.out.println("Entrez l'indice de l'entier à diviser: ");
+        String msgX = "Entrez l'indice de l'entier à diviser: ";
+        //x = sc.nextInt();
+        x = ReadInteger(msgX,0,9);
         System.out.println("Entrez le diviseur");
 
         y = sc.nextInt();
