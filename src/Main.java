@@ -1,4 +1,5 @@
 import java.io.StringBufferInputStream;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -7,22 +8,30 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int x, y;
+        //int x, y;
         String message = "";
         //System.out.println("Entrez l'indice de l'entier à diviser: ");
         while (true) {
-            String msgX = "Entrez l'indice de l'entier à diviser: ";
-            //x = sc.nextInt();
-            x = ReadInteger(msgX, 0, 9);
+            try {
+                Scanner sc2 = new Scanner(System.in);
+                System.out.println("Entrez l'indice de l'entier à diviser: ");
+                 //String msgX = "Entrez l'indice de l'entier à diviser: ";
+
+            int x = sc2.nextInt();
+            //x = ReadInteger(msgX, 0, 9);
 
             System.out.println("Entrez le diviseur");
-            y = sc.nextInt();
-            try {
+            int y = sc2.nextInt();
+
                 System.out.println("Le résultat de la division est : " + Division(x, y));
-                break;
-            } catch (ArithmeticException e ){
+                //break;
+            } catch (ArithmeticException  | InputMismatchException | ArrayIndexOutOfBoundsException e ){
                 System.out.println(e);
-            }
+            } /*catch (InputMismatchException e ){
+                System.err.println(e);
+            } catch (ArrayIndexOutOfBoundsException e){
+                System.err.println(e);
+            }*/
         }
     }
 
@@ -39,6 +48,7 @@ public class Main {
             }
             catch (NumberFormatException e) {
                 System.err.println("Erreur survenue, la valeur entrée doit être un entier.");
+                System.out.println(message);
             }
             catch(RuntimeException e ){
                 System.err.println("Une erreur est survenue: " + e);
