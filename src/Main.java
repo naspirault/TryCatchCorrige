@@ -1,3 +1,4 @@
+import java.io.StringBufferInputStream;
 import java.util.Scanner;
 
 public class Main {
@@ -7,17 +8,22 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int x, y;
-
+        String message = "";
         //System.out.println("Entrez l'indice de l'entier à diviser: ");
-        String msgX = "Entrez l'indice de l'entier à diviser: ";
-        //x = sc.nextInt();
-        x = ReadInteger(msgX,0,9);
-        System.out.println("Entrez le diviseur");
+        while (true) {
+            String msgX = "Entrez l'indice de l'entier à diviser: ";
+            //x = sc.nextInt();
+            x = ReadInteger(msgX, 0, 9);
 
-        y = sc.nextInt();
-
-        System.out.println("Le résultat de la division est : " + Division(x,y));
-
+            System.out.println("Entrez le diviseur");
+            y = sc.nextInt();
+            try {
+                System.out.println("Le résultat de la division est : " + Division(x, y));
+                break;
+            } catch (ArithmeticException e ){
+                System.out.println(e);
+            }
+        }
     }
 
     public static int ReadInteger(String message, int min, int max){
@@ -43,10 +49,7 @@ public class Main {
     }
 
     static int Division(int indice, int diviseur)
-
     {
-
         return tableau[indice] / diviseur;
-
     }
 }
